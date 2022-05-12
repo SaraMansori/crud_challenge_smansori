@@ -1,4 +1,16 @@
+:root {
+  --main-dark: #000022;
+  --primary-color: #2a9d8f;
+  --highlight-color: #e9c46a;
+  --secondary-color: #f4a261;
+  --warning-color: #ce4760;
+}
+
 header {
   text-align: center;
   padding: 2rem;
+}
+
+header img {
+  max-height: 20vh;
 }

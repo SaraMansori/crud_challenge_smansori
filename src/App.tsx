@@ -1,19 +1,16 @@
 
 import MainPage from "./pages/MoviesList";
-import { TableContextProvider } from "./context/Table/TableContext";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Studio Ghibli Movies</h1>
+        <img src="https://i.pinimg.com/originals/b4/00/a2/b400a2b4ca3da09dbee9ea425e3bd857.jpg" alt="" />
       </header>
-      <TableContextProvider>
-        <main>
-          <MainPage />
-        </main>
-      </TableContextProvider>
+      <main>
+        <MainPage />
+      </main>
     </div>
   );
 }

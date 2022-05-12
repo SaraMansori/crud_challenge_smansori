@@ -4,7 +4,7 @@ import { useFetch } from '../hooks/useFetch';
 import { IData, ITableOptions } from '../types';
 
 import CustomTable from '../components/Table/CustomTable';
-import TableHeader from '../components/Table/TableHeader/TableHeader';
+import TableHeader from '../components/Table/TableHeader';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import {
@@ -98,7 +98,7 @@ function MoviesList() {
   return (
     <Container>
       <Row className="justify-content-md-center" fluid>
-        <Col>
+        <Col md='12'>
           {tableOptions.columnKeys.length > 0 && (
             <>
               <TableHeader
