@@ -33,7 +33,7 @@ function TableHead({ columnKeys, sortBy, sortOrder, setTableOptions }: { columnK
     <thead>
       <tr>
         {columnKeys
-          .filter(column => column !== 'id')
+          .filter(column => column !== 'id' && column !== 'tableId')
           .map((column, i) => (
             <th onClick={() => updateSorting(column)} key={'column-name' + i}>
               {

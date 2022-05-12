@@ -36,7 +36,7 @@ function TableBody({
         return (
           <tr key={`row-${element.id}`}>
             {columnKeys
-              .filter(column => column !== 'id')
+              .filter(column => column !== 'id' && column !== 'tableId')
               .map((column, id) => {
                 return editingElement?.id === element.id ? (
                   <td key={'table-data' + id}>
