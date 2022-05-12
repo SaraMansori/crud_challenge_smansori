@@ -1,6 +1,8 @@
 interface IData {
   id?: string;
   tableId: string;
+  image?: string;
+  description?: string;
   title: string;
   director: string;
   producer: string;

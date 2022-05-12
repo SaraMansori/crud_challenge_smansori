@@ -1,6 +1,4 @@
-import Modal from 'react-bootstrap/Modal'
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { IData } from '../../../types';
 
@@ -33,7 +31,6 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
 
   return (
     <>
-
       <Button className="mb-3" style={{ width: '100%' }} variant="dark" onClick={handleShow}>
         Add new movie
       </Button>

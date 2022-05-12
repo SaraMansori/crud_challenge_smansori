@@ -10,18 +10,20 @@ export const parseAPIData = (data: IfetchedData[]) => {
         producer,
         release_date,
         running_time,
-        rt_score
+        rt_score,
+        image,
+        description
       }: IfetchedData,
       tableId: number
     ) => ({
-      id: id,
+      id,
       tableId: tableId.toString(),
-      title: title,
+      title,
       releaseDate: release_date,
       runningTime: running_time,
-      director: director,
-      producer: producer,
-      score: rt_score
+      director,
+      producer,
+      score: rt_score,
     })
   );
 }

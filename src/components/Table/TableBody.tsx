@@ -4,6 +4,7 @@ import { IData, IIndexable } from '../../types';
 import { UIText } from '../../shared/constants';
 
 import TableData from './TableData';
+import MovieDetailModal from '../UI/Modal/MovieDetailModal';
 
 function TableBody({
   columnKeys,
@@ -50,9 +51,15 @@ function TableBody({
                   </td>
                 ) : (
                   <td key={'table-data' + id}>
-                    <p className={column === 'title' ? 'clickable' : ''}>
-                      {(element as IIndexable)[column]}
-                    </p>
+                    {
+                      column === 'title' ?
+                        <MovieDetailModal
+                          textToShowModal={(element as IIndexable)[column]}
+                          element={element}
+                        />
+                        :
+                        <p>{(element as IIndexable)[column]}</p>
+                    }
                   </td>
                 );
               })}
