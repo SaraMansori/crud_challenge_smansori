@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useFetch } from '../hooks/useFetch';
 
-import { IData, ITableOptions } from '../types';
+import { IData, ITableOptions, IIndexable } from '../types';
 
 import CustomTable from '../components/Table/CustomTable';
 import TableHeader from '../components/Table/TableHeader';
@@ -19,6 +19,7 @@ import { parseAPIData } from '../utils';
 function MoviesList() {
 
   const [movies, setMovies] = useState<IData[]>([]);
+  const hiddenColumns = ['id', 'tableId', 'image', 'description']
 
   const [tableOptions, setTableOptions] = useState<ITableOptions>({
     text: '',
@@ -28,11 +29,16 @@ function MoviesList() {
   })
 
   const newFilteredMovies = useMemo(() => {
-    return movies.filter(element =>
-      Object.values(element).some(property =>
-        property.toLowerCase().includes(tableOptions.text)
+
+    const filteredKeys = movies.length > 0 ? Object.keys(movies[0]).filter(key => !hiddenColumns.includes(key)) : []
+
+    return movies
+      .filter(movie =>
+        filteredKeys
+          .some(key =>
+            (movie as IIndexable)[key].toLowerCase().includes(tableOptions.text)
+          )
       )
-    )
   }, [movies, tableOptions.text])
 
   const handleSearchBarTextChange = (value: string) => {
@@ -106,6 +112,7 @@ function MoviesList() {
                 handleSearchBarTextChange={handleSearchBarTextChange}
                 tableOptions={tableOptions}
               />
+
               {loading ?
 
                 <p>Loading...</p>

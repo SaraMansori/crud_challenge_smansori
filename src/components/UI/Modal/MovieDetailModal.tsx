@@ -1,8 +1,9 @@
-import { Modal, Card } from 'react-bootstrap';
+import { Modal, ListGroup, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { IData } from '../../../types';
+import './Modal.css';
 
-function MovieDetailModal({ textToShowModal, element }: { textToShowModal: string, element: IData }) {
+function MovieDetailModal({ textToShowModal, element: { title, description, image } }: { textToShowModal: string, element: IData }) {
 
   const [show, setShow] = useState(false);
 
@@ -17,19 +18,22 @@ function MovieDetailModal({ textToShowModal, element }: { textToShowModal: strin
       <Modal show={show} onHide={handleClose}>
 
         <Modal.Header closeButton>
-          <Modal.Title>{element.title}</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <Card style={{ width: '100%' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
+          <Row className='d-flex align-items-center'>
+            <Col sm="6">
+              <img className='modal-img' src={image} alt={`${title} poster`} />
+            </Col>
+            <Col sm="6">
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  {description}
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
         </Modal.Body>
       </Modal>
     </>
