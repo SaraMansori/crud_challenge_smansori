@@ -54,6 +54,10 @@ tr > td > input {
   color: var(--primary-color);
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .icon-wrapper {
   display: flex;
   align-items: center;

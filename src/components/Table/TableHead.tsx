@@ -37,7 +37,7 @@ function TableHead({ columnKeys, sortBy, sortOrder, setTableOptions }: { columnK
         {columnKeys
           .filter(column => !hiddenColumns.includes(column))
           .map((column, i) => (
-            <th onClick={() => updateSorting(column)} key={'column-name' + i}>
+            <th className="pointer" onClick={() => updateSorting(column)} key={'column-name' + i}>
               {
                 column === sortBy && sortIcon(column)
               }
