@@ -17,6 +17,9 @@ function TableBody({
   handleMovieEdit: (editedFilm: IData) => void;
   handleMovieDelete: (filmToDelete: IData) => void
 }) {
+
+  const hiddenColumns = ['id', 'tableId', 'image', 'description']
+
   const [editingElement, setEditingElement] = useState<IData | undefined>(
     undefined
   );
@@ -37,7 +40,7 @@ function TableBody({
         return (
           <tr key={`row-${element.id}`}>
             {columnKeys
-              .filter(column => column !== 'id' && column !== 'tableId')
+              .filter(column => !hiddenColumns.includes(column))
               .map((column, id) => {
                 return editingElement?.id === element.id ? (
                   <td key={'table-data' + id}>

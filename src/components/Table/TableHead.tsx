@@ -12,6 +12,8 @@ function TableHead({ columnKeys, sortBy, sortOrder, setTableOptions }: { columnK
    * @returns {string}
    */
 
+  const hiddenColumns = ['id', 'tableId', 'image', 'description']
+
   const parseName = (word: string) => word.charAt(0).toUpperCase() + word.slice(1).replace(columnNameRegex, '$1$4 $2$3$5')
 
   const updateSorting = (columnName: string) => {
@@ -33,7 +35,7 @@ function TableHead({ columnKeys, sortBy, sortOrder, setTableOptions }: { columnK
     <thead>
       <tr>
         {columnKeys
-          .filter(column => column !== 'id' && column !== 'tableId')
+          .filter(column => !hiddenColumns.includes(column))
           .map((column, i) => (
             <th onClick={() => updateSorting(column)} key={'column-name' + i}>
               {

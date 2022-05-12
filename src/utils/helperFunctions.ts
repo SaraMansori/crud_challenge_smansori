@@ -24,6 +24,8 @@ export const parseAPIData = (data: IfetchedData[]) => {
       director,
       producer,
       score: rt_score,
+      image,
+      description
     })
   );
 }
