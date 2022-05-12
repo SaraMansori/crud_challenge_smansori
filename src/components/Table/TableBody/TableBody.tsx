@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { IData, IIndexable } from '../../../types';
 import { UIText } from '../../../shared/constants';
 
-import { FaEdit, FaSave, FaTrash } from 'react-icons/fa';
 import TableData from '../TableData/TableData';
 
 function TableBody({
