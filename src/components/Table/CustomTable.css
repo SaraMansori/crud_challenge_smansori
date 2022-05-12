@@ -1,0 +1,74 @@
+/* th {
+  text-align: center;
+  color: red;
+}
+
+tr > td {
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+tr > th {
+  white-space: nowrap;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+tr > td > input {
+  width: 100%;
+}
+
+table > input {
+  max-width: 50px;
+}
+
+ */
+
+* {
+  color: var(--main-dark);
+}
+
+table p {
+  margin: 0;
+}
+
+tr > th {
+  white-space: nowrap;
+  line-height: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+tr > td {
+  vertical-align: middle;
+}
+
+tr > td > input {
+  width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0.3em;
+}
+
+.icon-wrapper > *,
+.icon-wrapper > svg {
+  color: var(--primary-color);
+  cursor: pointer;
+  fill: var(--primary-color);
+}
+
+.empty-data {
+  text-align: center;
+  padding: 3rem;
+}
