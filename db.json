@@ -10,31 +10,13 @@
       "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe"
     },
     {
-      "id": "12cfb892-aac0-4c5b-94af-521852e46d6a",
       "title": "Grave of the Fireflies",
-      "original_title": "火垂るの墓",
-      "original_title_romanised": "Hotaru no haka",
-      "image": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qG3RYlIVpTYclR9TYIsy8p7m7AT.jpg",
-      "movie_banner": "https://image.tmdb.org/t/p/original/vkZSd0Lp8iCVBGpFH9L7LzLusjS.jpg",
-      "description": "In the latter part of World War II, a boy and his sister, orphaned when their mother is killed in the firebombing of Tokyo, are left to survive on their own in what remains of civilian life in Japan. The plot follows this boy and his sister as they do their best to survive in the Japanese countryside, battling hunger, prejudice, and pride in their own quiet, personal battle.",
-      "director": "Isao Takahata",
-      "producer": "Toru Hara",
       "release_date": "1988",
       "running_time": "89",
+      "director": "Isao Takahata",
+      "producer": "Toru Hara",
       "rt_score": "97",
-      "people": [
-        "https://ghibliapi.herokuapp.com/people/"
-      ],
-      "species": [
-        "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2"
-      ],
-      "locations": [
-        "https://ghibliapi.herokuapp.com/locations/"
-      ],
-      "vehicles": [
-        "https://ghibliapi.herokuapp.com/vehicles/"
-      ],
-      "url": "https://ghibliapi.herokuapp.com/films/12cfb892-aac0-4c5b-94af-521852e46d6a"
+      "id": "12cfb892-aac0-4c5b-94af-521852e46d6a"
     },
     {
       "id": "58611129-2dbc-4a81-a72f-77ddfc1b1b49",
@@ -479,31 +461,13 @@
       "url": "https://ghibliapi.herokuapp.com/films/67405111-37a5-438f-81cc-4666af60c800"
     },
     {
-      "id": "578ae244-7750-4d9f-867b-f3cd3d6fecf4",
       "title": "The Tale of the Princess Kaguya",
-      "original_title": "かぐや姫の物語",
-      "original_title_romanised": "Kaguya-Hime no Monogatari",
-      "image": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/mWRQNlWXYYfd2z4FRm99MsgHgiA.jpg",
-      "movie_banner": "https://image.tmdb.org/t/p/original/lMaWlYThCSnsmW3usxWTpSuyZp1.jpg",
-      "description": "A bamboo cutter named Sanuki no Miyatsuko discovers a miniature girl inside a glowing bamboo shoot. Believing her to be a divine presence, he and his wife decide to raise her as their own, calling her 'Princess'.",
-      "director": "Isao Takahata",
-      "producer": "Yoshiaki Nishimura",
       "release_date": "2013",
       "running_time": "137",
+      "director": "Isao Takahata",
+      "producer": "Yoshiaki Nishimura",
       "rt_score": "100",
-      "people": [
-        "https://ghibliapi.herokuapp.com/people/"
-      ],
-      "species": [
-        "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2"
-      ],
-      "locations": [
-        "https://ghibliapi.herokuapp.com/locations/"
-      ],
-      "vehicles": [
-        "https://ghibliapi.herokuapp.com/vehicles/"
-      ],
-      "url": "https://ghibliapi.herokuapp.com/films/578ae244-7750-4d9f-867b-f3cd3d6fecf4"
+      "id": "578ae244-7750-4d9f-867b-f3cd3d6fecf4"
     },
     {
       "id": "5fdfb320-2a02-49a7-94ff-5ca418cae602",
