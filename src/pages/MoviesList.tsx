@@ -21,7 +21,7 @@ function MoviesList() {
 
   const hiddenColumns = ['id', 'tableId', 'image', 'description']
   const [movies, setMovies] = useState<IData[]>([]);
-  const { text, changeTableData, columnKeys, changeColumnKeys } = useContext(TableContext)
+  const { text, changeTableData, changeColumnKeys } = useContext(TableContext)
 
   const handleMovieSubmit = (newMovie: IData) => {
     createMovie(newMovie)
@@ -67,7 +67,10 @@ function MoviesList() {
 
   useEffect(() => {
 
-    const filteredKeys = movies.length > 0 ? Object.keys(movies[0]).filter(key => !hiddenColumns.includes(key)) : []
+    const filteredKeys = movies.length > 0 ?
+      Object.keys(movies[0]).filter(key => !hiddenColumns.includes(key))
+      :
+      []
 
     const filteredMovies = movies
       .filter(movie =>
