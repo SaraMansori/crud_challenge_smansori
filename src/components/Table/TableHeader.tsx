@@ -1,17 +1,27 @@
 import NewMovieModal from "../UI/Modal/NewMovieModal";
 import SearchBar from "../UI/SearchBar/SearchBar";
 import { Row, Col } from "react-bootstrap";
-import { IData, ITableOptions } from "../../types";
+import { IData } from "../../types";
 
-function TableHeader({ handleMovieSubmit, handleSearchBarTextChange, tableOptions }:
-  { handleMovieSubmit: (newMovie: IData) => void, handleSearchBarTextChange: (value: string) => void, tableOptions: ITableOptions }) {
+import { TableContext } from "../../context/Table/TableContext";
+import { useContext } from "react";
+
+function TableHeader({ handleMovieSubmit }:
+  { handleMovieSubmit: (newMovie: IData) => void }) {
+
+  const { changeSearchedText, text } = useContext(TableContext)
+
+  const handleSearchBarTextChange = (text: string) => {
+    changeSearchedText(text);
+  };
+
   return (
     <Row as="section" fluid>
       <Col md="8" sm="12">
         <SearchBar
           placeholder="Search"
           onChange={handleSearchBarTextChange}
-          value={tableOptions.text}
+          value={text}
         />
       </Col>
       <Col md="4" sm="12">
