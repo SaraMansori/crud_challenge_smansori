@@ -2,7 +2,6 @@
 import React, { ReactElement, useMemo, useReducer } from "react";
 import { TableReducer } from "./TableReducer";
 import { TableActions } from './TableActions';
-import { parseAPIData } from "../../utils";
 
 const initialState = {
   sortBy: '',
@@ -35,6 +34,7 @@ export const TableContext = React.createContext(initialState);
 export const TableContextProvider = ({ children }: { children: ReactElement }) => {
 
   const [state, dispatch] = useReducer(TableReducer, initialState);
+  const { sortBy, sortOrder, text, tableData, columnKeys } = state
 
   const changeSortOrder = () => {
     dispatch(TableActions.CHANGE_SORT_ORDER())
@@ -50,11 +50,11 @@ export const TableContextProvider = ({ children }: { children: ReactElement }) =
   // It is necessary to use a memo to prevent updates on every render.
   const contextValue = useMemo(() => {
     return {
-      sortBy: state.sortBy,
-      sortOrder: state.sortOrder,
-      text: state.text,
-      tableData: state.tableData,
-      columnKeys: state.columnKeys,
+      sortBy,
+      sortOrder,
+      text,
+      tableData,
+      columnKeys,
       changeSortOrder,
       changeSortBy,
       changeSearchedText,

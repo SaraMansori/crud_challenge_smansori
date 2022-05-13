@@ -1,17 +1,5 @@
 import { SortOptions, TableActionsKind } from '../../shared/constants';
-
-interface ITableState {
-  sortBy: string,
-  sortOrder: string,
-  text: string,
-  tableData: any[],
-  columnKeys: string[]
-}
-
-interface ITableAction {
-  type: TableActionsKind;
-  payload?: any;
-}
+import { ITableState, ITableAction } from '../../types'
 
 export const TableReducer = (state: ITableState, action: ITableAction) => {
   const { payload } = action;

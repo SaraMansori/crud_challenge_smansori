@@ -11,11 +11,12 @@ interface IData {
   score: string;
 }
 
-interface ITableOptions {
-  text: string,
+interface ITableState {
   sortBy: string,
   sortOrder: string,
+  text: string,
+  tableData: any[],
   columnKeys: string[]
 }
 
-export type { IData, ITableOptions }
+export type { IData, ITableState }
