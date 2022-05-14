@@ -6,7 +6,7 @@ import { IData, IIndexable } from '../types';
 
 import CustomTable from '../components/Table/CustomTable';
 import TableHeader from '../components/Table/TableHeader';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 
 import {
   getAllMovies,
@@ -15,7 +15,7 @@ import {
   deleteOneMovie
 } from '../services/moviesService';
 
-import { parseAPIData } from '../utils';
+import { parseAPIData } from '../shared/utils';
 
 function MoviesList() {
 
@@ -25,7 +25,9 @@ function MoviesList() {
 
   const handleMovieSubmit = (newMovie: IData) => {
     createMovie(newMovie)
-      .then(({ data }) => console.log(data))
+      .then(({ data }) => {
+        setMovies((prevState) => [...prevState, data])
+      })
       .catch(err => {
         throw new Error(err);
       });
@@ -104,7 +106,9 @@ function MoviesList() {
             />
 
             {loading ?
-              <p>Loading...</p>
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
               :
               <CustomTable
                 handleMovieEdit={handleMovieEdit}

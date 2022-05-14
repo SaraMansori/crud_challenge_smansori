@@ -11,7 +11,7 @@ const iconsMap = {
 function TableData({ onClick, icon, text }: { onClick?: () => void, icon?: string, text?: string }) {
   return (
     <td onClick={onClick}>
-      <div className="icon-wrapper">
+      <div className={`icon-wrapper ${text?.toLowerCase()}`}>
         {icon && (iconsMap as IIndexable)[icon]()}
         {text && <p> {text} </p>}
       </div>

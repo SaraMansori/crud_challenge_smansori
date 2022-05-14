@@ -6,7 +6,7 @@ import { UIText } from '../../shared/constants';
 
 import TableData from './TableData';
 import MovieDetailModal from '../UI/Modal/MovieDetailModal';
-import { sortData } from '../../utils/helperFunctions';
+import { sortData } from '../../shared/utils/helperFunctions';
 
 function TableBody({
   handleMovieEdit,
