@@ -24,12 +24,12 @@ function MovieDetailModal({ textToShowModal, element: { title, description, imag
         <Modal.Body>
           <Row className='d-flex align-items-center'>
             <Col sm="6">
-              <img className='modal-img' src={image} alt={`${title} poster`} />
+              <img className='modal-img' src={image ? image : 'https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png'} alt={`${title} poster`} />
             </Col>
             <Col sm="6">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  {description}
+                  {description ? description : <p>There is no description provided for this movie</p>}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
