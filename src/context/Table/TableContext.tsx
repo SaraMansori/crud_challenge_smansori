@@ -2,10 +2,11 @@
 import React, { ReactElement, useMemo, useReducer } from "react";
 import { TableReducer } from "./TableReducer";
 import { TableActions } from './TableActions';
+import { SortOptions } from "../../shared/constants";
 
-const initialState = {
+export const initialState = {
   sortBy: '',
-  sortOrder: '',
+  sortOrder: SortOptions.DESC,
   text: '',
   tableData: [
     {
@@ -34,10 +35,10 @@ export const TableContext = React.createContext(initialState);
 export const TableContextProvider = ({ children }: { children: ReactElement }) => {
 
   const [state, dispatch] = useReducer(TableReducer, initialState);
-  const { sortBy, sortOrder, text, tableData, columnKeys } = state
+  const { sortBy, sortOrder, text, tableData, columnKeys } = state;
 
   const changeSortOrder = () => {
-    dispatch(TableActions.CHANGE_SORT_ORDER())
+    dispatch(TableActions.CHANGE_SORT_ORDER());
   };
 
   const changeSortBy = (newSortBy: string) => {

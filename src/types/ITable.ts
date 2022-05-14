@@ -1,3 +1,4 @@
+import { SortOptions } from "../shared/constants";
 interface IData {
   id?: string;
   tableId?: string;
@@ -13,7 +14,7 @@ interface IData {
 
 interface ITableState {
   sortBy: string,
-  sortOrder: string,
+  sortOrder: SortOptions,
   text: string,
   tableData: any[],
   columnKeys: string[]
