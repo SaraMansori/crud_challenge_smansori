@@ -9,6 +9,7 @@
 - React Bootstrap
 - Components
 - Context API
+- JSON Server
 - Jest & React Testing Library
 
 ## Starting the app & scripts
