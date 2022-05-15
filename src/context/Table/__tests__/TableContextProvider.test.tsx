@@ -39,8 +39,6 @@ test('Context changes when methods are called', () => {
   fireEvent.click(screen.getByText('Change table data'));
   fireEvent.click(screen.getByText('Change column keys'));
 
-  //TODO: Actualizar el contextMockData
-
   expect(screen.getByTestId('sortOrder')).not.toHaveTextContent(initialState.sortOrder);
   expect(screen.getByTestId('sortBy')).not.toHaveTextContent(initialState.sortBy);
   expect(screen.getByTestId('sortBy')).toHaveTextContent('director');
@@ -48,7 +46,6 @@ test('Context changes when methods are called', () => {
   expect(screen.getByTestId('text')).toHaveTextContent('testSearchedText');
   expect(screen.getByTestId('tableData-title-0')).not.toHaveTextContent(initialState.tableData[0].title);
   expect(screen.getByTestId('tableData-title-0')).toHaveTextContent(newContextMockData.tableData[0].title);
-  // expect(screen.getByTestId('columnKeys-title')).not.toBe(initialState.tableData[0].title);
 
 })
 
