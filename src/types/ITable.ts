@@ -1,4 +1,4 @@
-import { SortOrderOptions } from "../shared/constants";
+import { SortOrderOptions } from '../shared/constants';
 interface IData {
   id?: string;
   tableId?: string;
@@ -13,11 +13,11 @@ interface IData {
 }
 
 interface ITableContext {
-  sortBy: string,
-  sortOrder: SortOrderOptions | string,
-  text: string,
-  tableData: any[],
-  columnKeys: string[]
+  sortBy: string;
+  sortOrder: SortOrderOptions | string;
+  text: string;
+  tableData: any[];
+  columnKeys: string[];
 }
 
-export type { IData, ITableContext }
+export type { IData, ITableContext };

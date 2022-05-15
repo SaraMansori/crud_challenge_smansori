@@ -1,4 +1,4 @@
-import { parseAPIData } from "./helperFunctions";
-import { columnNameRegex } from "./regex";
+import { parseAPIData } from './helperFunctions';
+import { columnNameRegex } from './regex';
 
-export { parseAPIData, columnNameRegex }
+export { parseAPIData, columnNameRegex };

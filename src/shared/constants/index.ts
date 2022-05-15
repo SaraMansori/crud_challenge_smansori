@@ -7,12 +7,12 @@ export enum TableActionsKind {
 }
 
 export enum SortOrderOptions {
-  ASC = "ASC",
-  DESC = "DESC"
+  ASC = 'ASC',
+  DESC = 'DESC'
 }
 
 export enum UIText {
-  EDIT = "Edit",
-  DELETE = "Delete",
-  SAVE = "Save"
+  EDIT = 'Edit',
+  DELETE = 'Delete',
+  SAVE = 'Save'
 }

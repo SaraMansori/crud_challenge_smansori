@@ -1,10 +1,16 @@
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FormControl } from 'react-bootstrap';
-import { FaSearch } from "react-icons/fa";
+import { FaSearch } from 'react-icons/fa';
 
-function SearchBar({ placeholder, value, onChange }: { placeholder: string, value: string, onChange: (value: string) => void }) {
-
-
+function SearchBar({
+  placeholder,
+  value,
+  onChange
+}: {
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
   return (
     <InputGroup className="mb-3">
       <InputGroup.Text id="search">
@@ -15,7 +21,7 @@ function SearchBar({ placeholder, value, onChange }: { placeholder: string, valu
         aria-label="Search Value"
         aria-describedby="search"
         value={value}
-        onChange={(e) => onChange(e.currentTarget.value)}
+        onChange={e => onChange(e.currentTarget.value)}
       />
     </InputGroup>
   );

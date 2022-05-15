@@ -1,19 +1,14 @@
-import { TableContextProvider, TableContext } from "../../context/Table"
+import { TableContextProvider, TableContext } from '../../context/Table';
 import { render } from '@testing-library/react';
 import React, { useContext } from 'react';
-import { IIndexable } from "../../types";
-import { newContextMockData } from "../../context/Table/__mock__/contextMockData";
+import { IIndexable } from '../../types';
+import { newContextMockData } from '../../context/Table/__mock__/contextMockData';
 
 const AllTheProviders = ({ children }: { children: React.ReactElement }) => {
-  return (
-    <TableContextProvider>
-      {children}
-    </TableContextProvider>
-  )
-}
-export const customRender = (
-  ui: React.ReactElement
-) => render(ui, { wrapper: AllTheProviders })
+  return <TableContextProvider>{children}</TableContextProvider>;
+};
+export const customRender = (ui: React.ReactElement) =>
+  render(ui, { wrapper: AllTheProviders });
 
 export const customRenderWithValue = (
   ui: React.ReactElement,
@@ -38,7 +33,8 @@ export const TestConsumer = () => {
     changeColumnKeys
   } = useContext(TableContext);
 
-  const { tableData: newTableData, columnKeys: newColumnKeys } = newContextMockData
+  const { tableData: newTableData, columnKeys: newColumnKeys } =
+    newContextMockData;
 
   return (
     <>
@@ -70,14 +66,22 @@ export const TestConsumer = () => {
       </ul>
 
       <section>
-        <button onClick={changeSortOrder}>Change sort order to ascending</button>
-        <button onClick={() => changeSortBy('director')}>Change sort by to director</button>
-        <button onClick={() => changeSearchedText('testSearchedText')}>Change searched text</button>
-        <button onClick={() => changeTableData(newTableData)}>Change table data</button>
-        <button
-          onClick={() => changeColumnKeys(newColumnKeys)}
-        >Change column keys</button>
+        <button onClick={changeSortOrder}>
+          Change sort order to ascending
+        </button>
+        <button onClick={() => changeSortBy('director')}>
+          Change sort by to director
+        </button>
+        <button onClick={() => changeSearchedText('testSearchedText')}>
+          Change searched text
+        </button>
+        <button onClick={() => changeTableData(newTableData)}>
+          Change table data
+        </button>
+        <button onClick={() => changeColumnKeys(newColumnKeys)}>
+          Change column keys
+        </button>
       </section>
     </>
   );
-}
+};

@@ -1,5 +1,3 @@
-
-
 export const contextMockData = {
   sortBy: 'title',
   sortOrder: 'ASC',
@@ -40,7 +38,7 @@ export const contextMockData = {
       releaseDate: 'testReleaseDate',
       runningTime: 'testRunningTime',
       score: 'testScore'
-    },
+    }
   ],
   columnKeys: ['title, director, producer']
 };
@@ -85,9 +83,7 @@ export const newContextMockData = {
       releaseDate: 'testReleaseDate',
       runningTime: 'testRunningTime',
       score: 'testScore'
-    },
+    }
   ],
   columnKeys: ['newTestColumnKey, director, producer']
-}
-
-
+};

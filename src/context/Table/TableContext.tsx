@@ -21,11 +21,11 @@ export const initialState = {
     }
   ],
   columnKeys: [''],
-  changeSortOrder: () => { },
-  changeSortBy: (newSortBy: string) => { },
-  changeSearchedText: (text: string) => { },
-  changeTableData: (data: any[]) => { },
-  changeColumnKeys: (keys: string[]) => { }
+  changeSortOrder: () => {},
+  changeSortBy: (newSortBy: string) => {},
+  changeSearchedText: (text: string) => {},
+  changeTableData: (data: any[]) => {},
+  changeColumnKeys: (keys: string[]) => {}
 };
 
 export const TableContext = React.createContext(initialState);
@@ -37,7 +37,6 @@ export const TableContextProvider = ({
   children: ReactElement;
   options?: { initialSortBy?: string; initialSortOrder?: string };
 }) => {
-
   const adaptedInitialState = {
     ...initialState,
     sortBy: options?.initialSortBy || initialState.sortBy,

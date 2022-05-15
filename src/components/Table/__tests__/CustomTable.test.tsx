@@ -14,8 +14,7 @@ test('Table Component renders a table element', () => {
     />
   );
 
-  expect(screen.getByTestId('movies-table')).toBeVisible()
-
+  expect(screen.getByTestId('movies-table')).toBeVisible();
 });
 
 test('Table executes edit and delete functions', () => {

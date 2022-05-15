@@ -1,15 +1,17 @@
-import NewMovieModal from "../UI/Modal/NewMovieModal";
-import SearchBar from "../UI/SearchBar/SearchBar";
-import { Row, Col } from "react-bootstrap";
-import { IData } from "../../types";
+import NewMovieModal from '../UI/Modal/NewMovieModal';
+import SearchBar from '../UI/SearchBar/SearchBar';
+import { Row, Col } from 'react-bootstrap';
+import { IData } from '../../types';
 
-import { TableContext } from "../../context/Table/TableContext";
-import { useContext } from "react";
+import { TableContext } from '../../context/Table/TableContext';
+import { useContext } from 'react';
 
-function TableHeader({ handleMovieSubmit }:
-  { handleMovieSubmit: (newMovie: IData) => void }) {
-
-  const { changeSearchedText, text } = useContext(TableContext)
+function TableHeader({
+  handleMovieSubmit
+}: {
+  handleMovieSubmit: (newMovie: IData) => void;
+}) {
+  const { changeSearchedText, text } = useContext(TableContext);
 
   const handleSearchBarTextChange = (text: string) => {
     changeSearchedText(text);
