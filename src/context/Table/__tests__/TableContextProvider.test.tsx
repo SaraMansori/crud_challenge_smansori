@@ -20,7 +20,7 @@ test('TestConsumer shows default value', () => {
     .forEach(key => {
       const arrayOfObjects = (initialState as IIndexable)[key];
       arrayOfObjects.forEach((object: {}, i: number) => {
-        Object.keys(object).forEach((objectKey) => {
+        Object.keys(object).forEach(objectKey => {
           expect(
             screen.getByTestId(`tableData-${objectKey}-${i}`)
           ).toHaveTextContent((object as IIndexable)[objectKey]);
@@ -30,7 +30,6 @@ test('TestConsumer shows default value', () => {
 });
 
 test('Context changes when methods are called', () => {
-
   customRender(<TestConsumer />);
 
   fireEvent.click(screen.getByText('Change sort order to ascending'));
@@ -39,13 +38,19 @@ test('Context changes when methods are called', () => {
   fireEvent.click(screen.getByText('Change table data'));
   fireEvent.click(screen.getByText('Change column keys'));
 
-  expect(screen.getByTestId('sortOrder')).not.toHaveTextContent(initialState.sortOrder);
-  expect(screen.getByTestId('sortBy')).not.toHaveTextContent(initialState.sortBy);
+  expect(screen.getByTestId('sortOrder')).not.toHaveTextContent(
+    initialState.sortOrder
+  );
+  expect(screen.getByTestId('sortBy')).not.toHaveTextContent(
+    initialState.sortBy
+  );
   expect(screen.getByTestId('sortBy')).toHaveTextContent('director');
   expect(screen.getByTestId('text')).not.toHaveTextContent(initialState.text);
   expect(screen.getByTestId('text')).toHaveTextContent('testSearchedText');
-  expect(screen.getByTestId('tableData-title-0')).not.toHaveTextContent(initialState.tableData[0].title);
-  expect(screen.getByTestId('tableData-title-0')).toHaveTextContent(newContextMockData.tableData[0].title);
-
-})
-
+  expect(screen.getByTestId('tableData-title-0')).not.toHaveTextContent(
+    initialState.tableData[0].title
+  );
+  expect(screen.getByTestId('tableData-title-0')).toHaveTextContent(
+    newContextMockData.tableData[0].title
+  );
+});

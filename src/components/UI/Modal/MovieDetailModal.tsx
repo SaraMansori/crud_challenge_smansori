@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { IData } from '../../../types';
 import './Modal.css';
 
-function MovieDetailModal({ textToShowModal, element: { title, description, image } }: { textToShowModal: string, element: IData }) {
-
+function MovieDetailModal({
+  textToShowModal,
+  element: { title, description, image }
+}: {
+  textToShowModal: string;
+  element: IData;
+}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,20 +21,31 @@ function MovieDetailModal({ textToShowModal, element: { title, description, imag
         {textToShowModal}
       </p>
       <Modal show={show} onHide={handleClose}>
-
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <Row className='d-flex align-items-center'>
+          <Row className="d-flex align-items-center">
             <Col sm="6">
-              <img className='modal-img' src={image ? image : 'https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png'} alt={`${title} poster`} />
+              <img
+                className="modal-img"
+                src={
+                  image
+                    ? image
+                    : 'https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png'
+                }
+                alt={`${title} poster`}
+              />
             </Col>
             <Col sm="6">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  {description ? description : <p>There is no description provided for this movie</p>}
+                  {description ? (
+                    description
+                  ) : (
+                    <p>There is no description provided for this movie</p>
+                  )}
                 </ListGroup.Item>
               </ListGroup>
             </Col>

@@ -104,7 +104,11 @@ function MoviesList() {
           <TableHeader handleMovieSubmit={handleMovieSubmit} />
 
           {loading ? (
-            <Spinner animation="border" role="status" className="align-self-center mt-3">
+            <Spinner
+              animation="border"
+              role="status"
+              className="align-self-center mt-3"
+            >
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           ) : !error ? (

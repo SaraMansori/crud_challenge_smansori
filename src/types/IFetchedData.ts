@@ -1,5 +1,5 @@
 interface IfetchedData {
-  [key: string]: string
+  [key: string]: string;
 }
 
-export type { IfetchedData }
+export type { IfetchedData };

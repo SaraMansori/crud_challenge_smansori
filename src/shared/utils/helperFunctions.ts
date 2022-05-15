@@ -1,6 +1,6 @@
-import { IfetchedData } from "../../types";
-import { IIndexable, IData } from "../../types";
-import { SortOrderOptions } from "../constants";
+import { IfetchedData } from '../../types';
+import { IIndexable, IData } from '../../types';
+import { SortOrderOptions } from '../constants';
 
 export const parseAPIData = (data: IfetchedData[]) => {
   return data.map(
@@ -30,9 +30,13 @@ export const parseAPIData = (data: IfetchedData[]) => {
       description
     })
   );
-}
+};
 
-export const sortData = (dataToSort: IData[], sortBy: string, sortOrder: string) => {
+export const sortData = (
+  dataToSort: IData[],
+  sortBy: string,
+  sortOrder: string
+) => {
   const sortedArr = [...dataToSort].sort((a, b) => {
     return (a as IIndexable)[sortBy]?.localeCompare(
       (b as IIndexable)[sortBy],

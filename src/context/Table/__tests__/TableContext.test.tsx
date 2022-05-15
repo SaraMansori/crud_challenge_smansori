@@ -1,10 +1,12 @@
 import { contextMockData } from '../__mock__/contextMockData';
 import { screen } from '@testing-library/react';
 import { IIndexable } from '../../../types';
-import { customRenderWithValue, TestConsumer } from '../../../shared/utils/testingUtils';
+import {
+  customRenderWithValue,
+  TestConsumer
+} from '../../../shared/utils/testingUtils';
 
 test('TestConsumer shows value from provider', () => {
-
   const providerProps = contextMockData;
 
   customRenderWithValue(<TestConsumer />, { providerProps });
@@ -31,7 +33,7 @@ test('TestConsumer shows value from provider', () => {
     .forEach(key => {
       const arrayOfObjects = (providerProps as IIndexable)[key];
       arrayOfObjects.forEach((object: {}, i: number) => {
-        Object.keys(object).forEach((objectKey) => {
+        Object.keys(object).forEach(objectKey => {
           expect(
             screen.getByTestId(`tableData-${objectKey}-${i}`)
           ).toHaveTextContent((object as IIndexable)[objectKey]);

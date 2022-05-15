@@ -1,8 +1,8 @@
-import { TableActionsKind } from "../shared/constants";
+import { TableActionsKind } from '../shared/constants';
 
 interface ITableAction {
   type: TableActionsKind;
   payload?: any;
 }
 
-export type { ITableAction }
+export type { ITableAction };
