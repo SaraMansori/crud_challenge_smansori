@@ -38,9 +38,10 @@ export function editOneMovie(id: string, { title, releaseDate, runningTime, dire
     producer,
     rt_score: score,
   }
-  return moviesService.put(`/${id}`, editedMovie)
+  return moviesService.patch(`/${id}`, editedMovie)
 }
 
 export function deleteOneMovie(id: string) {
   return moviesService.delete(`/${id}`)
 }
+

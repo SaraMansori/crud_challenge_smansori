@@ -17,16 +17,19 @@ import {
 
 import { parseAPIData } from '../shared/utils';
 
+// TODO: Move hiddenColumns al contexto
+
 function MoviesList() {
 
   const hiddenColumns = ['id', 'tableId', 'image', 'description']
+
   const [movies, setMovies] = useState<IData[]>([]);
   const { text, changeTableData, changeColumnKeys } = useContext(TableContext)
 
   const handleMovieSubmit = (newMovie: IData) => {
     createMovie(newMovie)
       .then(({ data }) => {
-        setMovies((prevState) => [...prevState, data])
+        setMovies((prevState) => [...prevState, parseAPIData([data])[0]])
       })
       .catch(err => {
         throw new Error(err);
@@ -34,6 +37,7 @@ function MoviesList() {
   };
 
   const handleMovieEdit = (editedFilm: IData) => {
+
     editedFilm.id &&
       editOneMovie(editedFilm.id, editedFilm)
         .then(({ data }) => {
@@ -65,7 +69,7 @@ function MoviesList() {
         });
   }
 
-  const { data, error, loading } = useFetch(getAllMovies)
+  const { data: rawData, error, loading } = useFetch(getAllMovies)
 
   useEffect(() => {
 
@@ -87,18 +91,18 @@ function MoviesList() {
 
   useEffect(() => {
 
-    if (data) {
-      const formattedData = parseAPIData(data)
+    if (rawData) {
+      const formattedData = parseAPIData(rawData)
       setMovies(formattedData);
       if (formattedData.length > 0) {
         changeColumnKeys(Object.keys(formattedData[0]))
       }
     }
-  }, [data])
+  }, [rawData])
 
   return (
     <Container>
-      <Row className="justify-content-md-center" fluid>
+      <Row className="justify-content-md-center">
         <Col md='12'>
           <>
             <TableHeader
@@ -111,8 +115,8 @@ function MoviesList() {
               </Spinner>
               :
               <CustomTable
-                handleMovieEdit={handleMovieEdit}
-                handleMovieDelete={handleMovieDelete}
+                handleDataEdit={handleMovieEdit}
+                handleDataDelete={handleMovieDelete}
               />
             }
           </>

@@ -4,8 +4,7 @@ import { IData } from '../../../types';
 
 function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: IData) => void }) {
 
-  const [show, setShow] = useState(false);
-  const [movieData, setMovieData] = useState({
+  const initialState = {
     title: '',
     tableId: '',
     releaseDate: '',
@@ -13,7 +12,10 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
     director: '',
     producer: '',
     score: ''
-  })
+  }
+
+  const [show, setShow] = useState(false);
+  const [movieData, setMovieData] = useState(initialState)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,6 +28,7 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
   const handleSubmit = (e: any) => {
     e.preventDefault()
     handleMovieSubmit(movieData)
+    setMovieData(initialState)
     handleClose()
   }
 
@@ -51,7 +54,7 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
                 name="title"
                 value={movieData.title}
                 onChange={(e) => handleInputChange(e as any)}
-                minLength={10}
+                minLength={1}
                 required
                 autoFocus
               />
@@ -89,7 +92,7 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
                 value={movieData.director}
                 onChange={(e) => handleInputChange(e)}
                 type="text"
-                minLength={10}
+                minLength={5}
                 required
                 autoFocus
               />
@@ -102,7 +105,7 @@ function NewMovieModal({ handleMovieSubmit }: { handleMovieSubmit: (newMovie: ID
                 value={movieData.producer}
                 onChange={(e) => handleInputChange(e)}
                 type="text"
-                minLength={10}
+                minLength={5}
                 required
                 autoFocus
               />

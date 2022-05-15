@@ -1,12 +1,12 @@
-import { SortOptions, TableActionsKind } from '../../shared/constants';
-import { ITableState, ITableAction } from '../../types'
+import { SortOrderOptions, TableActionsKind } from '../../shared/constants';
+import { ITableContext, ITableAction } from '../../types'
 
-export const TableReducer = (state: ITableState, action: ITableAction) => {
+export const TableReducer = (state: ITableContext, action: ITableAction) => {
   const { payload } = action;
   switch (action.type) {
     case TableActionsKind.CHANGE_SORT_ORDER:
       return {
-        ...state, sortOrder: state.sortOrder === SortOptions.ASC ? SortOptions.DESC : SortOptions.ASC
+        ...state, sortOrder: state.sortOrder === SortOrderOptions.ASC ? SortOrderOptions.DESC : SortOrderOptions.ASC
       };
     case TableActionsKind.CHANGE_SORT_BY:
       return { ...state, sortBy: payload || '' };

@@ -1,12 +1,10 @@
-
-import React, { ReactElement, useMemo, useReducer } from "react";
-import { TableReducer } from "./TableReducer";
+import React, { ReactElement, useMemo, useReducer } from 'react';
+import { TableReducer } from './TableReducer';
 import { TableActions } from './TableActions';
-import { SortOptions } from "../../shared/constants";
 
 export const initialState = {
   sortBy: '',
-  sortOrder: SortOptions.DESC,
+  sortOrder: '',
   text: '',
   tableData: [
     {
@@ -19,7 +17,7 @@ export const initialState = {
       producer: '',
       releaseDate: '',
       runningTime: '',
-      score: '',
+      score: ''
     }
   ],
   columnKeys: [''],
@@ -32,9 +30,21 @@ export const initialState = {
 
 export const TableContext = React.createContext(initialState);
 
-export const TableContextProvider = ({ children }: { children: ReactElement }) => {
+export const TableContextProvider = ({
+  children,
+  options
+}: {
+  children: ReactElement;
+  options?: { initialSortBy?: string; initialSortOrder?: string };
+}) => {
 
-  const [state, dispatch] = useReducer(TableReducer, initialState);
+  const adaptedInitialState = {
+    ...initialState,
+    sortBy: options?.initialSortBy || initialState.sortBy,
+    sortOrder: options?.initialSortOrder || initialState.sortOrder
+  };
+
+  const [state, dispatch] = useReducer(TableReducer, adaptedInitialState);
   const { sortBy, sortOrder, text, tableData, columnKeys } = state;
 
   const changeSortOrder = () => {
@@ -42,11 +52,14 @@ export const TableContextProvider = ({ children }: { children: ReactElement }) =
   };
 
   const changeSortBy = (newSortBy: string) => {
-    dispatch(TableActions.CHANGE_SORT_BY(newSortBy))
+    dispatch(TableActions.CHANGE_SORT_BY(newSortBy));
   };
-  const changeSearchedText = (text: string) => dispatch(TableActions.CHANGE_SEARCHED_TEXT(text));
-  const changeTableData = (data: any[]) => dispatch(TableActions.CHANGE_TABLE_DATA(data))
-  const changeColumnKeys = (keys: string[]) => dispatch(TableActions.CHANGE_COLUMN_KEYS(keys))
+  const changeSearchedText = (text: string) =>
+    dispatch(TableActions.CHANGE_SEARCHED_TEXT(text));
+  const changeTableData = (data: any[]) =>
+    dispatch(TableActions.CHANGE_TABLE_DATA(data));
+  const changeColumnKeys = (keys: string[]) =>
+    dispatch(TableActions.CHANGE_COLUMN_KEYS(keys));
 
   // It is necessary to use a memo to prevent updates on every render.
   const contextValue = useMemo(() => {
@@ -61,7 +74,7 @@ export const TableContextProvider = ({ children }: { children: ReactElement }) =
       changeSearchedText,
       changeTableData,
       changeColumnKeys
-    }
+    };
   }, [state, dispatch]);
 
   return (
@@ -69,5 +82,4 @@ export const TableContextProvider = ({ children }: { children: ReactElement }) =
       {children}
     </TableContext.Provider>
   );
-}
-
+};

@@ -1,6 +1,6 @@
 import { IfetchedData } from "../../types";
 import { IIndexable, IData } from "../../types";
-import { SortOptions } from "../constants";
+import { SortOrderOptions } from "../constants";
 
 export const parseAPIData = (data: IfetchedData[]) => {
   return data.map(
@@ -41,7 +41,7 @@ export const sortData = (dataToSort: IData[], sortBy: string, sortOrder: string)
     );
   });
 
-  if (sortOrder === SortOptions.ASC) {
+  if (sortOrder === SortOrderOptions.ASC) {
     return sortedArr;
   } else {
     return sortedArr.reverse();

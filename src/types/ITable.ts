@@ -1,4 +1,4 @@
-import { SortOptions } from "../shared/constants";
+import { SortOrderOptions } from "../shared/constants";
 interface IData {
   id?: string;
   tableId?: string;
@@ -12,12 +12,12 @@ interface IData {
   score: string;
 }
 
-interface ITableState {
+interface ITableContext {
   sortBy: string,
-  sortOrder: SortOptions,
+  sortOrder: SortOrderOptions | string,
   text: string,
   tableData: any[],
   columnKeys: string[]
 }
 
-export type { IData, ITableState }
+export type { IData, ITableContext }

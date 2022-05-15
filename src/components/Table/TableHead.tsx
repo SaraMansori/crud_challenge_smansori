@@ -1,6 +1,6 @@
 import { columnNameRegex } from '../../shared/utils/regex';
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
-import { SortOptions } from '../../shared/constants';
+import { SortOrderOptions } from '../../shared/constants';
 import { useContext } from 'react';
 import { TableContext } from '../../context/Table/TableContext';
 
@@ -28,7 +28,7 @@ function TableHead() {
   }
 
   const sortIcon = (columnName: string) => {
-    return columnName === sortBy && sortOrder === SortOptions.ASC ?
+    return columnName === sortBy && sortOrder === SortOrderOptions.ASC ?
       <BsCaretUpFill className='mr4' />
       :
       <BsCaretDownFill className='mr4' />

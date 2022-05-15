@@ -6,7 +6,7 @@ export enum TableActionsKind {
   CHANGE_COLUMN_KEYS = 'CHANGE_COLUMN_KEYS'
 }
 
-export enum SortOptions {
+export enum SortOrderOptions {
   ASC = "ASC",
   DESC = "DESC"
 }

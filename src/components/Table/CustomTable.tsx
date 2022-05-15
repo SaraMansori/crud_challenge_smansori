@@ -8,25 +8,22 @@ import { IData } from '../../types';
 import './CustomTable.css';
 
 function CustomTable({
-  handleMovieEdit,
-  handleMovieDelete
+  handleDataEdit,
+  handleDataDelete
 }: {
-  handleMovieEdit: (editedFilm: IData) => void;
-  handleMovieDelete: (filmToDelete: IData) => void
+  handleDataEdit: (editedElement: IData) => void;
+  handleDataDelete: (elementToDelete: IData) => void
 }) {
 
 
   return (
-    <>
-      <Table striped bordered hover responsive>
-        <TableHead />
-        <TableBody
-          handleMovieEdit={handleMovieEdit}
-          handleMovieDelete={handleMovieDelete}
-        />
-
-      </Table>
-    </>
+    <Table striped bordered hover responsive data-testid="movies-table">
+      <TableHead />
+      <TableBody
+        handleDataEdit={handleDataEdit}
+        handleDataDelete={handleDataDelete}
+      />
+    </Table>
   );
 }
 

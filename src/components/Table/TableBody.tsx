@@ -9,11 +9,11 @@ import MovieDetailModal from '../UI/Modal/MovieDetailModal';
 import { sortData } from '../../shared/utils/helperFunctions';
 
 function TableBody({
-  handleMovieEdit,
-  handleMovieDelete
+  handleDataEdit,
+  handleDataDelete
 }: {
-  handleMovieEdit: (editedFilm: IData) => void;
-  handleMovieDelete: (filmToDelete: IData) => void
+  handleDataEdit: (editedElement: IData) => void;
+  handleDataDelete: (elementToDelete: IData) => void
 }) {
 
   const { tableData, sortBy, sortOrder, columnKeys } = useContext(TableContext)
@@ -28,15 +28,15 @@ function TableBody({
     editingElement && setEditingElement({ ...editingElement, [name]: value });
   };
 
-  const handleSave = (editedMovie: IData) => {
-    handleMovieEdit(editedMovie)
+  const handleSave = (editedElement: IData) => {
+    handleDataEdit(editedElement)
     setEditingElement(undefined);
   };
 
   const sortedData = sortData(tableData, sortBy, sortOrder)
 
   return (
-    <tbody>
+    <tbody data-testid='movies-table-body' >
       {
         sortedData.length > 0 ?
           sortedData.map(element => {
@@ -72,12 +72,14 @@ function TableBody({
 
                 {editingElement?.id === element.id ? (
                   <TableData
+                    testId='save'
                     onClick={() => editingElement && handleSave(editingElement)}
                     text={UIText.SAVE}
                     icon={UIText.SAVE}
                   />
                 ) : (
                   <TableData
+                    testId='edit'
                     onClick={() => setEditingElement(element)}
                     text={UIText.EDIT}
                     icon={UIText.EDIT}
@@ -85,7 +87,8 @@ function TableBody({
                 )}
 
                 <TableData
-                  onClick={() => handleMovieDelete(element)}
+                  testId='delete'
+                  onClick={() => handleDataDelete(element)}
                   text={UIText.DELETE}
                   icon={UIText.DELETE}
                 />

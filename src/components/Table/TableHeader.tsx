@@ -16,7 +16,7 @@ function TableHeader({ handleMovieSubmit }:
   };
 
   return (
-    <Row as="section" fluid>
+    <Row as="section">
       <Col md="8" sm="12">
         <SearchBar
           placeholder="Search"

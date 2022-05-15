@@ -8,9 +8,9 @@ const iconsMap = {
   [UIText.DELETE]: () => <FaTrash />
 }
 
-function TableData({ onClick, icon, text }: { onClick?: () => void, icon?: string, text?: string }) {
+function TableData({ onClick, icon, text, testId }: { onClick?: () => void, icon?: string, text?: string, testId: string }) {
   return (
-    <td onClick={onClick}>
+    <td data-testid={testId} onClick={onClick}>
       <div className={`icon-wrapper ${text?.toLowerCase()}`}>
         {icon && (iconsMap as IIndexable)[icon]()}
         {text && <p> {text} </p>}
