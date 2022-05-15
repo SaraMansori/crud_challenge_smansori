@@ -1,4 +1,4 @@
-`Table showcasing the Ghibli movies (CRUD)`
+# Table showcasing the Ghibli movies in React TypeScript (CRUD)
 
 ![](https://i.gyazo.com/dcbe6e2da52961926b2d49293457b410.gif)
 
