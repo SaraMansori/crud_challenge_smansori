@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import MainPage from "./pages/MoviesList";
 import './App.css';
+import { TableContextProvider } from "./context/Table/TableContext";
+import { SortOrderOptions } from './shared/constants';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src="https://i.pinimg.com/originals/b4/00/a2/b400a2b4ca3da09dbee9ea425e3bd857.jpg" alt="" />
       </header>
+      <main>
+        <TableContextProvider options={{ initialSortBy: 'releaseDate', initialSortOrder: SortOrderOptions.DESC }}>
+          <MainPage />
+        </TableContextProvider>
+      </main>
     </div>
   );
 }
