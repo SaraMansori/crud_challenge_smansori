@@ -17,19 +17,16 @@ import {
 
 import { parseAPIData } from '../shared/utils';
 
-// TODO: Move hiddenColumns al contexto
-
 function MoviesList() {
-
-  const hiddenColumns = ['id', 'tableId', 'image', 'description']
+  const hiddenColumns = ['id', 'tableId', 'image', 'description'];
 
   const [movies, setMovies] = useState<IData[]>([]);
-  const { text, changeTableData, changeColumnKeys } = useContext(TableContext)
+  const { text, changeTableData, changeColumnKeys } = useContext(TableContext);
 
   const handleMovieSubmit = (newMovie: IData) => {
     createMovie(newMovie)
       .then(({ data }) => {
-        setMovies((prevState) => [...prevState, parseAPIData([data])[0]])
+        setMovies(prevState => [...prevState, parseAPIData([data])[0]]);
       })
       .catch(err => {
         throw new Error(err);
@@ -37,16 +34,17 @@ function MoviesList() {
   };
 
   const handleMovieEdit = (editedFilm: IData) => {
-
     editedFilm.id &&
       editOneMovie(editedFilm.id, editedFilm)
         .then(({ data }) => {
-          const indexOfMovie = [...movies].findIndex((film) => film.id === data.id)
-          setMovies((prevState) => {
-            const moviesCopy = [...prevState]
-            moviesCopy.splice(indexOfMovie, 1, parseAPIData([data])[0])
-            return moviesCopy
-          })
+          const indexOfMovie = [...movies].findIndex(
+            film => film.id === data.id
+          );
+          setMovies(prevState => {
+            const moviesCopy = [...prevState];
+            moviesCopy.splice(indexOfMovie, 1, parseAPIData([data])[0]);
+            return moviesCopy;
+          });
         })
         .catch(err => {
           throw new Error(err);
@@ -57,73 +55,73 @@ function MoviesList() {
     movieToDelete.id &&
       deleteOneMovie(movieToDelete.id)
         .then(({ data }) => {
-          const indexOfMovie = [...movies].findIndex((film) => film.id === data.id)
-          setMovies((prevState) => {
-            const moviesCopy = [...prevState]
-            moviesCopy.splice(indexOfMovie, 1)
-            return moviesCopy
-          })
+          const indexOfMovie = [...movies].findIndex(
+            film => film.id === data.id
+          );
+          setMovies(prevState => {
+            const moviesCopy = [...prevState];
+            moviesCopy.splice(indexOfMovie, 1);
+            return moviesCopy;
+          });
         })
         .catch(err => {
           throw new Error(err);
         });
-  }
+  };
 
-  const { data: rawData, error, loading } = useFetch(getAllMovies)
+  const { data: rawData, error, loading } = useFetch(getAllMovies);
 
   useEffect(() => {
+    const filteredKeys =
+      movies.length > 0
+        ? Object.keys(movies[0]).filter(key => !hiddenColumns.includes(key))
+        : [];
 
-    const filteredKeys = movies.length > 0 ?
-      Object.keys(movies[0]).filter(key => !hiddenColumns.includes(key))
-      :
-      []
-
-    const filteredMovies = movies
-      .filter(movie =>
-        filteredKeys
-          .some(key =>
-            (movie as IIndexable)[key].toLowerCase().includes(text)
-          )
+    const filteredMovies = movies.filter(movie =>
+      filteredKeys.some(key =>
+        (movie as IIndexable)[key].toLowerCase().includes(text)
       )
+    );
 
-    changeTableData(filteredMovies)
-  }, [movies, text])
+    changeTableData(filteredMovies);
+    changeColumnKeys(filteredKeys);
+  }, [movies, text]);
 
   useEffect(() => {
-
     if (rawData) {
-      const formattedData = parseAPIData(rawData)
+      const formattedData = parseAPIData(rawData);
       setMovies(formattedData);
       if (formattedData.length > 0) {
-        changeColumnKeys(Object.keys(formattedData[0]))
+        changeColumnKeys(Object.keys(formattedData[0]));
       }
     }
-  }, [rawData])
+  }, [rawData]);
 
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col md='12'>
-          <>
-            <TableHeader
-              handleMovieSubmit={handleMovieSubmit}
-            />
+        <Col md="12" className="d-flex flex-column align-items-stretch">
+          <TableHeader handleMovieSubmit={handleMovieSubmit} />
 
-            {loading ?
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-              :
-              <CustomTable
-                handleDataEdit={handleMovieEdit}
-                handleDataDelete={handleMovieDelete}
-              />
-            }
-          </>
+          {loading ? (
+            <Spinner animation="border" role="status" className="align-self-center mt-3">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          ) : !error ? (
+            <CustomTable
+              handleDataEdit={handleMovieEdit}
+              handleDataDelete={handleMovieDelete}
+            />
+          ) : (
+            error && (
+              <p className="text-center mt-3">
+                There was something wrong fetching the data
+              </p>
+            )
+          )}
         </Col>
       </Row>
     </Container>
-
   );
 }
 

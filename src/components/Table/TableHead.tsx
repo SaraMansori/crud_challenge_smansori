@@ -13,8 +13,6 @@ function TableHead() {
    * @returns {string}
    */
 
-  const hiddenColumns = ['id', 'tableId', 'image', 'description']
-
   const { changeSortBy, changeSortOrder, sortBy, sortOrder, columnKeys } = useContext(TableContext)
 
 
@@ -38,7 +36,7 @@ function TableHead() {
     <thead>
       <tr>
         {columnKeys
-          .filter(column => !hiddenColumns.includes(column))
+          .filter(column => columnKeys.includes(column))
           .map((column, i) => (
             <th className="pointer" onClick={() => handleSorting(column)} key={'column-name' + i}>
               {
