@@ -1,6 +1,6 @@
 # Table showcasing the Ghibli movies in React TypeScript (CRUD)
 
-![](https://i.gyazo.com/dcbe6e2da52961926b2d49293457b410.gif)
+![animation](https://user-images.githubusercontent.com/70658678/168488143-6f503be2-7c6e-4312-88a4-7650838ba644.gif)
 
 ## Stack used
 
